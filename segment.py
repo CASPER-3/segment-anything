@@ -130,6 +130,8 @@ def calc_boundary(segmentation,image):
     points_arr = np.array(points)
     # print(points_arr)
     find_boundary(points_arr,image)
+    image_save = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
+    cv2.imwrite("result/boundary.png",image_save)
     
 def find_boundary(points,image):
     # 找到x坐标最小和最大的点
@@ -150,7 +152,7 @@ def find_boundary(points,image):
     cv2.circle(image, (top_right[0], top_right[1]), radius=5, color=(255, 0, 0), thickness=-1)
     cv2.circle(image, (bottom_left[0], bottom_left[1]), radius=5, color=(255, 0, 0), thickness=-1)
     cv2.circle(image, (bottom_right[0], bottom_right[1]), radius=5, color=(255, 0, 0), thickness=-1)
-    cv2.imwrite("result/boundary.png",image)
+    
 
     
 
