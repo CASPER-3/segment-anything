@@ -146,10 +146,10 @@ def find_boundary(points,image):
     print('Top right:', top_right)
     print('Bottom left:', bottom_left)
     print('Bottom right:', bottom_right)
-    cv2.circle(image, (top_left[1], top_left[0]), radius=5, color=(255, 0, 0), thickness=-1)
-    cv2.circle(image, (top_right[1], top_right[0]), radius=5, color=(255, 0, 0), thickness=-1)
-    cv2.circle(image, (bottom_left[1], bottom_left[0]), radius=5, color=(255, 0, 0), thickness=-1)
-    cv2.circle(image, (bottom_right[1], bottom_right[0]), radius=5, color=(255, 0, 0), thickness=-1)
+    cv2.circle(image, (top_left[0], top_left[1]), radius=5, color=(255, 0, 0), thickness=-1)
+    cv2.circle(image, (top_right[0], top_right[1]), radius=5, color=(255, 0, 0), thickness=-1)
+    cv2.circle(image, (bottom_left[0], bottom_left[1]), radius=5, color=(255, 0, 0), thickness=-1)
+    cv2.circle(image, (bottom_right[0], bottom_right[1]), radius=5, color=(255, 0, 0), thickness=-1)
     cv2.imwrite("result/boundary.png",image)
 
     
