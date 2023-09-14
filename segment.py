@@ -115,7 +115,7 @@ def show_max_area_anns(anns, area,image):
         calc_boundary(m,image)
     ax.imshow(img)
 
-def calc_boundary(segmentation,image):
+def calc_boundary(segmentation,image,img_name):
     # mask_area = np.asarray(segmentation == True).nonzero()
     # print(mask_area)
     col,row = np.where(segmentation)
@@ -131,7 +131,7 @@ def calc_boundary(segmentation,image):
     # print(points_arr)
     find_boundary(points_arr,image)
     image_save = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
-    cv2.imwrite("result/boundary.png",image_save)
+    cv2.imwrite("result/"+img_name+"boundary.png",image_save)
     
 def find_boundary(points,image):
     # 找到x坐标最小和最大的点
@@ -159,6 +159,7 @@ def find_boundary(points,image):
 
 def segment_scene(img_name):
     image = cv2.imread(img_pth + img_name)
+    # image = cv2.resize(image,)
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     masks = mask_generator.generate(image)
     print(len(masks))
@@ -175,4 +176,9 @@ def segment_scene(img_name):
     plt.savefig("result/" + img_name + "_segment.png")
 
 
-segment_scene("0.jpg")
+img_list = ["scene1_px.png","scene1_nx.png","scene1_py.png","scene1_ny.png","scene1_pz.png","scene1_nz.png",
+"scene2_px.png","scene2_nx.png","scene2_py.png","scene2_ny.png","scene2_pz.png","scene2_nz.png"]
+
+for img_name in img_list:
+    segment_scene(img_name)
+
