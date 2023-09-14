@@ -119,16 +119,16 @@ def calc_boundary(segmentation,image):
     # mask_area = np.asarray(segmentation == True).nonzero()
     # print(mask_area)
     col,row = np.where(segmentation)
-    print(col)
-    print(row)
-    print(col.shape)
-    print(row.shape)
+    # print(col)
+    # print(row)
+    # print(col.shape)
+    # print(row.shape)
     area_size = col.shape[0]
     points = []
     for i in range(area_size):
         points.append([row[i],col[i]])
     points_arr = np.array(points)
-    print(points_arr)
+    # print(points_arr)
     find_boundary(points_arr,image)
     
 def find_boundary(points,image):
@@ -168,9 +168,9 @@ def segment_scene(img_name):
 
     plt.figure(figsize=(20, 20))
     plt.imshow(image)
-    show_max_area_anns(masks, 70000,image)
+    show_max_area_anns(masks, 30000,image)
     plt.axis("off")
     plt.savefig("result/" + img_name + "_segment.png")
 
 
-segment_scene("indoor1_slim.jpg")
+segment_scene("0.jpg")
